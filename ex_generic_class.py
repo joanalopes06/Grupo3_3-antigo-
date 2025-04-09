@@ -5,33 +5,28 @@
 #objective: Test classes based on generic class Gclass
 
 """""
-db = 'business.db'
+db = 'Grupo3.db'
 
 #Uncomment to test class Person (select next 4 lines and press ctrl-1)
-from classes.person import Person
-test_class = Person
+#from classes.game_player import Game_player
+#test_class = Game_player
+#ob = '100;Antonio Silva;1966-03-12;4000.0'
+#test_class.reset()
+
+#from classes.game import Game
+#test_class = Game
+#ob = '100;Antonio Silva;1966-03-12;4000.0'
+#test_class.reset()
+
+#from classes.player import Player
+#test_class = Player
+#ob = '100;Antonio Silva;1966-03-12;4000.0'
+#test_class.reset()
+
+from classes.tournament import Tournament
+test_class = Tournament
 ob = '100;Antonio Silva;1966-03-12;4000.0'
-db = 'person.db'
-
-#Uncomment to test class Cliente (select next two lines and press ctrl-1)
-# from classes.cliente import Cliente
-# test_class = Cliente
-# ob = '600;Xavier;1958-03-20;5000.0'
-
-#Uncomment to test class Product
-# from classes.product import Product
-# test_class = Product
-# ob='Product1;10.9;100'
-
-#Uncomment to test class Customer_login
-# from classes.customer import Customer
-# test_class = Customer
-
-#Uncomment to test class Order
-# from classes.customerorder import ustomerOrder
-# from classes.customer import Customer
-# Customer.read('data/business.db')
-# test_class = Order
+test_class.reset()
 
 import datetime
 
