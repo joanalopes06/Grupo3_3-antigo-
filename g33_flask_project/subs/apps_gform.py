@@ -1,29 +1,18 @@
 from flask import Flask, render_template, request, session
-from classes.game import Game
-from datafile import filename
-from classes.game_player import Game_player
-from classes.player import Player
-from classes.tournament import Tournament
 
+from classes.player import Player
+from classes.game_player import Game_player
+from classes.game import Game
+from classes.tournament import Tournament
 from classes.userlogin import Userlogin
-from subs.apps_player import apps_player
-from subs.apps_gform import apps_gform 
-from subs.apps_subform import apps_subform 
-from subs.apps_userlogin import apps_userlogin
 
 prev_option = ""
 
-def apps_subform(cname=""):
+def apps_gform(cname=''):
     global prev_option
-    tlist = cname.split('_')
-    cnames = tlist[0]
-    scname = tlist[1]
     ulogin=session.get("user")
     if (ulogin != None):
-        cl = eval(cnames)
-        sbl = eval(scname)
-        cl_header = cl.header
-        sbl_header = sbl.header
+        cl = eval(cname)
         butshow = "enabled"
         butedit = "disabled"
         option = request.args.get("option")
@@ -45,9 +34,6 @@ def apps_subform(cname=""):
                 butedit = "enabled"
             elif option == "delete":
                 obj = cl.current()
-                lines = sbl.getlines(sbl.att[1],getattr(obj, cl.att[0]))
-                for line in lines:
-                    sbl.remove(line.id)
                 cl.remove(obj.id)
                 if not cl.previous():
                     cl.first()
@@ -64,45 +50,22 @@ def apps_subform(cname=""):
                 cl.nextrec()
             elif option == "last":
                 cl.last()
-            elif option[:6] == "delrow":
-                row = int(option.split("_")[1])
-                obj = cl.current()
-                lines = sbl.getlines(sbl.att[1],getattr(obj, cl.att[0]))
-                # print(row,lines[row])
-                sbl.remove(lines[row])
-            elif option == "addrow":
-                butshow = "disabled"
-                butedit = "disabled"
-            elif option == "saverow":
-                obj = cl.current()
-                strobj = '0'
-            # strobj = getattr(obj, cl.att[0])
-                for i in range(1, len(sbl.att)):
-                    strobj += ";" + request.form[sbl.att[i]]
-                objl = sbl.from_string(strobj)
-                # code = str(getattr(objl, sbl.att[0])) + str(getattr(objl, sbl.att[1]))
-                sbl.insert(objl.id)
             elif option == 'exit':
                 return render_template("index.html", ulogin=session.get("user"))
         prev_option = option
         obj = cl.current()
-        headers = list()
-        objl = list()
         if option == 'insert' or len(cl.lst) == 0:
             obj = dict()
             obj[cl.att[0]] = 0
             for i in range(1, len(cl.att)):
                 obj[cl.att[i]] = ""
-        else:
-            for i in range(1, len(sbl.att)):
-                    headers.append(sbl.att[i][1:])        
-            lines = sbl.getlines(sbl.att[1],getattr(obj, cl.att[0]))
-            for line in lines:
-                objl.append(sbl.obj[line])
+        # else:
+        #     for att in cl.att:
+        #         dobj[att[1:]] = getattr(obj, att)
         # return render_template("gform.html", butshow=butshow, butedit=butedit, cname=cname, code=code,name = name,dob=dob,salary=salary)
-        return render_template("subform.html", cl_header=cl_header,sbl_header=sbl_header,butshow=butshow, butedit=butedit, cname=cname, obj=obj,att=cl.att,des=cl.des, ulogin=session.get("user"),objl=objl,desl=sbl.des, attl=sbl.att)
+        return render_template("gform.html", butshow=butshow, butedit=butedit, cname=cname, obj=obj,att=cl.att,des=cl.des,ulogin=session.get("user"))
     else:
         return render_template("index.html", ulogin=ulogin)
-
+# -- coding: utf-8 --
 
 
