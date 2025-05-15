@@ -15,7 +15,8 @@ Game.read(filename + 'Grupo3.db')
 app.secret_key = 'BAD_SECRET_KEY'
 @app.route("/")
 def index():
-    return render_template("index.html", ulogin=session.get("user"))
+    return render_template("index.html")
+
 @app.route("/login")
 def login():
     return render_template("login.html", user= "", password="", ulogin=session.get("user"),resul = "")
@@ -46,4 +47,4 @@ def userlogin():
     return apps_userlogin()
 if __name__ == '__main__':
     app.run()
-    
+
