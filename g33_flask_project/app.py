@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, session
-from classes.game import Game
+from classes.player import Player
 from datafile import filename
 from classes.userlogin import Userlogin
 from subs.apps_game import apps_game 
@@ -10,7 +10,7 @@ from subs.apps_userlogin import apps_userlogin
 
 app = Flask(__name__)
 
-Game.read(filename + 'Grupo3.db')
+Player.read(filename)
 
 app.secret_key = 'BAD_SECRET_KEY'
 @app.route("/")

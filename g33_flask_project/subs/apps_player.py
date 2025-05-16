@@ -1,4 +1,3 @@
-from flask import Flask, render_template, request, session
 from classes.player import Player
 
 prev_option = ""
@@ -55,11 +54,10 @@ def apps_player():
             name = obj.name
             dob = obj.dob
             salary = obj.salary
-        return render_template("Player.html", butshow=butshow, butedit=butedit, 
+        return render_template("person.html", butshow=butshow, butedit=butedit, 
                         id=id,name = name,dob=dob,salary=salary, 
                         ulogin=session.get("user"))
     else:
         return render_template("index.html", ulogin=ulogin)
-
-
+# -*- coding: utf-8 -*-
 
