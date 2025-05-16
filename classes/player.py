@@ -72,4 +72,3 @@ class Player(Gclass):
     @score.setter
     def score(self, score):
         self._score = score
-    
