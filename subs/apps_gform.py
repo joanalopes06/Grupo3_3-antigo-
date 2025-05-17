@@ -1,9 +1,16 @@
 from flask import Flask, render_template, request, session
 
+<<<<<<< HEAD
 from classes.player import Player
 from classes.game_player import Game_player
 from classes.game import Game
 from classes.tournament import Tournament
+=======
+from classes.customer import Customer
+from classes.product import Product
+from classes.customerorder import CustomerOrder
+from classes.orderproduct import OrderProduct
+>>>>>>> 11e013834dcf7cc13e1dceef9261badcbf333104
 from classes.userlogin import Userlogin
 
 prev_option = ""
@@ -12,7 +19,11 @@ def apps_gform(cname=''):
     global prev_option
     ulogin=session.get("user")
     if (ulogin != None):
+<<<<<<< HEAD
         cl = eval(cname.capitalize())
+=======
+        cl = eval(cname)
+>>>>>>> 11e013834dcf7cc13e1dceef9261badcbf333104
         butshow = "enabled"
         butedit = "disabled"
         option = request.args.get("option")

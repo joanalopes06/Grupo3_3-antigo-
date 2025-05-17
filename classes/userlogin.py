@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
+<<<<<<< HEAD
 # Class User - generic version
+=======
+
+>>>>>>> 11e013834dcf7cc13e1dceef9261badcbf333104
 # import sys
 import bcrypt
 # Import the generic class
@@ -19,8 +23,13 @@ class Userlogin(Gclass):
     username = ''
     user_id = 0
     # Constructor: Called when an object is instantiated
+<<<<<<< HEAD
     def __init__(self, id, user, usergroup, password):
         super().__init__()
+=======
+    def _init_(self, id, user, usergroup, password):
+        super()._init_()
+>>>>>>> 11e013834dcf7cc13e1dceef9261badcbf333104
         # Object attributes
         id = Userlogin.get_id(id)
         self._id = id
@@ -33,6 +42,7 @@ class Userlogin(Gclass):
         Userlogin.lst.append(id)
 
     # id property getter method
+<<<<<<< HEAD
     @property
     def id(self):
         return self._id
@@ -87,3 +97,59 @@ class Userlogin(Gclass):
     
     def __str__(self):
         return f'Id:{self.id}, User:{self.user}, Usergroup:{self.usergroup}'
+=======
+@property
+def id(self):
+    return self._id
+# code property getter method
+@property
+def user(self):
+    return self._user
+# name property getter method
+@property
+def usergroup(self):
+    return self._usergroup
+@usergroup.setter
+def usergroup(self, usergroup):
+    self._usergroup = usergroup
+    
+@property
+def password(self):
+    return ""
+
+@password.setter
+def password(self, password):
+    self._password = password
+
+@classmethod
+def get_user_id(cls, user):
+    user_id = 0
+    lsobj = Userlogin.find(user, 'user')
+    if len(lsobj) == 1:
+        obj = lsobj[0]
+        user_id = obj.id
+    return user_id            
+@classmethod
+def chk_password(cls, user, password):
+    Userlogin.username = ''
+    user_id = Userlogin.get_user_id(user)
+    if user_id != 0:
+        obj = Userlogin.obj[user_id]
+        valid = bcrypt.checkpw(password.encode(), obj._password.encode())
+        if valid:
+            Userlogin.user_id = obj.id
+            Userlogin.username = obj.user
+            message = "Valid"
+        else:
+            message = 'Wrong password'
+    else:
+        message = 'No existent user'
+    return message
+@classmethod
+def set_password(cls, password):
+    passencrypted = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
+    return passencrypted.decode()
+
+def _str_(self):
+    return f'Id:{self.id}, User:{self.user}, Usergroup:{self.usergroup}'
+>>>>>>> 11e013834dcf7cc13e1dceef9261badcbf333104

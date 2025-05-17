@@ -11,13 +11,20 @@ class Game_player(Gclass):
     pos = 0
     sortkey = ''
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 11e013834dcf7cc13e1dceef9261badcbf333104
     # Attribute names list, identifier attribute must be the first one and callled 'id'
     att = ['_id','_players_id','_games_id']
     # Class header title
     header = 'Game Player'
     # field description for use in, for example, input form
+<<<<<<< HEAD
     des = ['Id','Id Game','Id Player']
+=======
+    des = ['Id','Id Tournament','Id Player']
+>>>>>>> 11e013834dcf7cc13e1dceef9261badcbf333104
     # Constructor: Called when an object is instantiated
     def __init__(self, id, players_id, games_id):
         super().__init__()

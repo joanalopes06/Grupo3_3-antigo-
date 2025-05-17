@@ -1,10 +1,24 @@
 from flask import Flask, render_template, request, session
+<<<<<<< HEAD
 from classes.game_player import Game_player
 from datafile import filename
 from classes.game import Game
 from classes.player import Player
 from classes.tournament import Tournament
 from classes.userlogin import Userlogin
+=======
+from classes.game import Game
+from datafile import filename
+from classes.game_player import Game_player
+from classes.player import Player
+from classes.tournament import Tournament
+
+from classes.userlogin import Userlogin
+from subs.apps_player import apps_player
+from subs.apps_gform import apps_gform 
+from subs.apps_subform import apps_subform 
+from subs.apps_userlogin import apps_userlogin
+>>>>>>> 11e013834dcf7cc13e1dceef9261badcbf333104
 
 prev_option = ""
 
@@ -71,7 +85,11 @@ def apps_subform(cname=""):
             elif option == "saverow":
                 obj = cl.current()
                 strobj = '0'
+<<<<<<< HEAD
                 # strobj = getattr(obj, cl.att[0])
+=======
+            # strobj = getattr(obj, cl.att[0])
+>>>>>>> 11e013834dcf7cc13e1dceef9261badcbf333104
                 for i in range(1, len(sbl.att)):
                     strobj += ";" + request.form[sbl.att[i]]
                 objl = sbl.from_string(strobj)
@@ -98,4 +116,10 @@ def apps_subform(cname=""):
         return render_template("subform.html", cl_header=cl_header,sbl_header=sbl_header,butshow=butshow, butedit=butedit, cname=cname, obj=obj,att=cl.att,des=cl.des, ulogin=session.get("user"),objl=objl,desl=sbl.des, attl=sbl.att)
     else:
         return render_template("index.html", ulogin=ulogin)
+<<<<<<< HEAD
 # -*- coding: utf-8 -*-
+=======
+
+
+
+>>>>>>> 11e013834dcf7cc13e1dceef9261badcbf333104

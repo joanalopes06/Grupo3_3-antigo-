@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, session
+<<<<<<< HEAD
 from classes.player import Player
 from datafile import filename
 from classes.game import Game
@@ -7,6 +8,16 @@ from classes.tournament import Tournament
 
 from classes.userlogin import Userlogin
 from subs.apps_player import apps_player 
+=======
+from classes.game import Game
+from datafile import filename
+from classes.game_player import Game_player
+from classes.player import Player
+from classes.tournament import Tournament
+
+from classes.userlogin import Userlogin
+from subs.apps_player import apps_player
+>>>>>>> 11e013834dcf7cc13e1dceef9261badcbf333104
 from subs.apps_gform import apps_gform 
 from subs.apps_subform import apps_subform 
 from subs.apps_userlogin import apps_userlogin
@@ -14,10 +25,13 @@ from subs.apps_userlogin import apps_userlogin
 app = Flask(__name__)
 
 Player.read(filename + 'Grupo3.db')
+<<<<<<< HEAD
 Game.read(filename + 'Grupo3.db')
 Game_player.read(filename + 'Grupo3.db')
 Tournament.read(filename + 'Grupo3.db')
 
+=======
+>>>>>>> 11e013834dcf7cc13e1dceef9261badcbf333104
 Userlogin.read(filename + 'Grupo3.db')
 app.secret_key = 'BAD_SECRET_KEY'
 @app.route("/")
@@ -51,7 +65,13 @@ def subform(cname):
 @app.route("/Userlogin", methods=["post","get"])
 def userlogin():
     return apps_userlogin()
+<<<<<<< HEAD
 if __name__ == '__main__':
     app.run()
     
     
+=======
+if __name__ == '_main_':
+    app.run()
+    
+>>>>>>> 11e013834dcf7cc13e1dceef9261badcbf333104

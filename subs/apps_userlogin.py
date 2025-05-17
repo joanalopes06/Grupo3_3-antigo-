@@ -6,11 +6,18 @@ prev_option = ""
 def apps_userlogin():
     global prev_option
     ulogin=session.get("user")
+<<<<<<< HEAD
     user_id = Userlogin.get_user_id(ulogin)
     if (ulogin != None):
         group = Userlogin.obj[user_id].usergroup
         if group != "admin":
             Userlogin.current(user_id)
+=======
+    if (ulogin != None):
+        group = Userlogin.obj[Userlogin.user_id].usergroup
+        if group != "admin":
+            Userlogin.current(ulogin)
+>>>>>>> 11e013834dcf7cc13e1dceef9261badcbf333104
         butshow = "enabled"
         butedit = "disabled"
         option = request.args.get("option")
@@ -19,7 +26,11 @@ def apps_userlogin():
             butedit = "enabled"
         elif option == "delete":
             obj = Userlogin.current()
+<<<<<<< HEAD
             Userlogin.remove(obj.id)
+=======
+            Userlogin.remove(obj.user)
+>>>>>>> 11e013834dcf7cc13e1dceef9261badcbf333104
             if not Userlogin.previous():
                 Userlogin.first()
         elif option == "insert":
@@ -28,6 +39,7 @@ def apps_userlogin():
         elif option == 'cancel':
             pass
         elif prev_option == 'insert' and option == 'save':
+<<<<<<< HEAD
             obj = Userlogin(0,request.form["user"],request.form["usergroup"], \
                             Userlogin.set_password(request.form["password"]))
             Userlogin.insert(obj.id)
@@ -49,6 +61,30 @@ def apps_userlogin():
             Userlogin.last()
         elif option == 'exit':
             return render_template("index.html", ulogin=session.get("user"))
+=======
+            obj = Userlogin(request.form["user"],request.form["usergroup"], \
+                            Userlogin.set_password(request.form["password"]))
+            Userlogin.insert(obj.user)
+            Userlogin.last()
+        elif prev_option == 'edit' and option == 'save':
+           obj = Userlogin.current()
+           if group == "admin":
+               obj.usergroup = request.form["usergroup"]
+           if request.form["password"] != "":
+               obj.password = Userlogin.set_password(request.form["password"])
+               print(obj.password)
+           Userlogin.update(obj.user)
+        elif option == "first":
+               Userlogin.first()
+        elif option == "previous":
+               Userlogin.previous()
+        elif option == "next":
+               Userlogin.nextrec()
+        elif option == "last":
+               Userlogin.last()
+        elif option == 'exit':
+               return render_template("index.html", ulogin=session.get("user"))
+>>>>>>> 11e013834dcf7cc13e1dceef9261badcbf333104
         prev_option = option
         obj = Userlogin.current()
         if option == 'insert' or len(Userlogin.lst) == 0:
@@ -62,5 +98,10 @@ def apps_userlogin():
         return render_template("userlogin.html", butshow=butshow, butedit=butedit, user=user,usergroup = usergroup,password=password, ulogin=session.get("user"), group=group)
     else:
         return render_template("index.html", ulogin=ulogin)
+<<<<<<< HEAD
 # -*- coding: utf-8 -*-
 
+=======
+ 
+    
+>>>>>>> 11e013834dcf7cc13e1dceef9261badcbf333104

@@ -1,5 +1,6 @@
 """
 @author: António Brito / Carlos Bragança
+<<<<<<< HEAD
 (2025) objective: class Player
 """
 # Class Player - generic version with inheritance
@@ -7,12 +8,23 @@ from classes.gclass import Gclass
 
 class Player(Gclass):
 
+=======
+(2025) objective: class Person
+"""
+# Class Person - generic version with inheritance
+from classes.gclass import Gclass
+
+class Player(Gclass):
+>>>>>>> 11e013834dcf7cc13e1dceef9261badcbf333104
     obj = dict()
     lst = list()
     pos = 0
     sortkey = ''
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 11e013834dcf7cc13e1dceef9261badcbf333104
     # Attribute names list, identifier attribute must be the first one and callled 'id'
     att = ['_players_id','_username','_level','_join_date', '_score']
     # Class header title
@@ -71,3 +83,7 @@ class Player(Gclass):
     @score.setter
     def score(self, score):
         self._score = score
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 11e013834dcf7cc13e1dceef9261badcbf333104
