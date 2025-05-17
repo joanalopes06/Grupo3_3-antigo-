@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="dados">
+        <img src="{{ url_for('static', filename='images/Player.jpg') }}" alt="{{ cname }}" width="300" height="200">
+
+
+        <h1>Player</h1>
+        <br>
+        <button id="edit" type="button" {{ butshow }} onclick="window.location.href = '/Player?option=edit'" class="button1">Edit</button>
+        <button id="delete" type="button" {{ butshow }} onclick="window.location.href = '/Player?option=delete'" class="button1">Delete</button>
+        <button id="insert" type="button" {{ butshow }} onclick="window.location.href = '/Player?option=insert'" class="button1">Insert</button>
+        <button id="save" type="submit" form="form" {{ butedit }} class="button1">Save</button>
+        <button id="cancel" type="button" {{ butedit }} onclick="window.location.href = '/Player?option=cancel'" class="button1">Cancel</button>
+        <button id="exit" type="button" {{ butshow }} onclick="window.location.href = '/Player?option=exit'" class="button1">Exit</button>
+        <br><br>
+        <form id="form" action="/Player?option=save" method="post">
+            <label for="id">Id:</label>
+            <input type="text" disabled id="id" name="id" value="{{ id }}" size="5"/>
+            <br><br>
+            <label for="username">Username:</label>
+            <input type="text" {{ butedit }} id="username" name="username" value="{{ username }}" size="30"/>
+            <br><br>
+            <label for="level">Level:</label>
+            <input type="text" {{ butedit }} id="level" name="level" value="{{ level }}" size="10"/>
+            <br><br>
+            <label for="join_date">Join Date:</label>
+            <input type="text" {{ butedit }} id="join_date" name="join_date" value="{{ join_date }}" size="10"/>
+            <br><br>
+            <label for="score">Score:</label>
+            <input type="text" {{ butedit }} id="score" name="score" value="{{ score }}" size="10"/>
+        </form>
+        <br>
+        <button id="first" type="button" {{ butshow }} onclick="window.location.href = '/Player?option=first'" class="button1">First</button>
+        <button id="previous" type="button" {{ butshow }} onclick="window.location.href = '/Player?option=previous'" class="button1">Previous</button>
+        <button id="next" type="button" {{ butshow }} onclick="window.location.href = '/Player?option=next'" class="button1">Next</button>
+        <button id="last" type="button" {{ butshow }} onclick="window.location.href = '/Player?option=last'" class="button1">Last</button>
+    </div>
+{% endblock %}
