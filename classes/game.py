@@ -6,14 +6,12 @@
 from classes.gclass import Gclass
 
 class Game(Gclass):
-<<<<<<< HEAD
-=======
+
     obj = dict()
     lst = list()
     pos = 0
     sortkey = ''
 
->>>>>>> origin/master
     # Attribute names list, identifier attribute must be the first one and callled 'id'
     att = ['_id','_genre','_title', '_release_date','_tournaments_id']
     # Class header title
